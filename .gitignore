@@ -1,0 +1,21 @@
+node_modules/
+dist/
+.vite/
+
+.DS_Store
+*.log
+
+.env
+.env.local
+.env.*.local
+
+# Private reference material
+references/resume/
+*.pdf
+*.PDF
+private/
+private-notes/
+*.private.*
+*.secret.*
+*private-note*
+*private_notes*
