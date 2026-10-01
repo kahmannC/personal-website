@@ -57,43 +57,40 @@ const experience = [
 
 const projects = [
   {
-    title: "Customer 360 Analytical Data Mart",
-    label: "Unified customer view",
-    description:
-      "Connected lifecycle, product adoption, campaign attribution, transaction behavior, and engagement metrics into a reusable analytical layer."
+    title: "Building a unified customer view across banking systems",
+    label: "Customer 360 · Digital banking",
+    problem: "Customer identities, product holdings, transactions, and campaign activity were spread across separate systems.",
+    contribution: "Designed the customer identity foundation and reusable analytical tables for product adoption, balances, transactions, and campaign exposure.",
+    outcome: "Created a customer-level foundation for segmentation, behavioural analysis, and campaign measurement.",
+    tags: ["Customer identity", "Data modelling", "SQL", "Campaign measurement"],
+    url: "https://customer-360-banking-case-study.carmenchoong234.chatgpt.site",
+    kind: "banking"
   },
   {
-    title: "Seller Advertising Measurement Framework",
-    label: "Marketplace monetization",
-    description:
-      "Defined the metrics and evaluation methods needed to launch, measure, and improve advertising tools across Lazada seller segments."
-  },
-  {
-    title: "Campaign Performance Automation",
-    label: "Faster decisions",
-    description:
-      "Moved repeat campaign monitoring into automated dashboards, giving stakeholders clearer visibility while reducing manual support effort."
+    title: "Making seller advertising strategy fit different seller needs",
+    label: "Seller advertising · Lazada",
+    problem: "A diverse seller base needed more than a single free-credit approach to advertising adoption and continued spending.",
+    contribution: "Developed a segmentation and lifecycle approach to connect seller needs with advertising initiatives and measurement.",
+    outcome: "Shows the reasoning behind differentiated seller strategies and a framework for evaluating their effectiveness.",
+    tags: ["Seller segmentation", "Monetisation", "Lifecycle strategy", "Measurement design"],
+    url: "https://seller-advertising-portfolio.carmenchoong234.chatgpt.site",
+    kind: "advertising"
   }
 ];
 
-const tools = [
-  "SQL",
-  "AWS Athena",
-  "Presto/Trino",
-  "Databricks",
-  "Tableau",
-  "QuickSight",
-  "Looker Studio",
-  "Prompt Engineering"
+const skillGroups = [
+  { title: "Analysis & measurement", text: "Product adoption, customer segmentation, lifecycle analysis, campaign measurement", tools: "SQL · Python" },
+  { title: "Analytical data modelling", text: "Customer identity resolution, reusable fact tables, daily snapshots, customer-level aggregation", tools: "AWS Athena · Presto/Trino · Databricks" },
+  { title: "Reporting & decision support", text: "Self-service dashboards, shared metric definitions, recurring performance reporting", tools: "Tableau · QuickSight · Looker Studio" }
 ];
 
 document.querySelector<HTMLDivElement>("#app")!.innerHTML = `
   <header class="site-header">
     <a class="logo" href="#top" aria-label="Kahmann Choong home">KC</a>
     <nav aria-label="Primary navigation">
-      <a href="#focus">Focus</a>
+      <a href="#projects">Selected work</a>
+      <a href="#focus">Expertise</a>
       <a href="#experience">Experience</a>
-      <a href="#projects">Projects</a>
       <a href="#contact">Contact</a>
     </nav>
   </header>
@@ -101,14 +98,47 @@ document.querySelector<HTMLDivElement>("#app")!.innerHTML = `
   <main id="top">
     <section class="hero" aria-labelledby="intro-title">
       <div class="hero-kicker">
-        <span>Kuala Lumpur, Malaysia</span>
-        <span>Product & Customer Analytics</span>
+        <span>Kuala Lumpur, Malaysia · UTC+8</span>
+        <span>Open to fully remote roles</span>
       </div>
-      <h1 id="intro-title">Kahmann Choong</h1>
+      <p class="eyebrow">Kahmann Choong · Product & Customer Analytics</p>
+      <h1 id="intro-title">Turning business questions into useful analytical systems.</h1>
       <p class="hero-copy">
-        I am a senior data analyst working across product analytics, customer lifecycle measurement,
-        campaign performance, and analytical data modelling for digital products and growth teams.
+        I connect fragmented data, define meaningful measures, and build analytical models
+        that help product and growth teams understand customers. My work spans digital banking,
+        ecommerce, and marketing analytics.
       </p>
+      <div class="hero-actions">
+        <a class="button" href="#projects">Explore selected work</a>
+        <a class="button secondary" href="mailto:carmenchoong234@gmail.com">Get in touch</a>
+      </div>
+    </section>
+
+    <section id="projects" class="section project-section" aria-labelledby="projects-title">
+      <div class="chapter">
+        <p class="eyebrow">Selected work</p>
+        <h2 id="projects-title">From fragmented data to better decisions.</h2>
+        <p class="section-intro">Two case studies: the analytical foundation behind customer understanding, and the commercial thinking behind seller advertising.</p>
+      </div>
+      <div class="project-list">
+        ${projects.map((project, index) => `
+          <article class="case-card ${project.kind}">
+            <div class="case-preview" aria-label="${index === 0 ? 'Customer data model overview' : 'Seller strategy overview'}">
+              <p class="preview-caption">${index === 0 ? 'THE ANALYTICAL FOUNDATION' : 'THE COMMERCIAL FRAMEWORK'}</p>
+              <div class="preview-grid">${(index === 0 ? ["Products", "Transactions", "Campaigns"] : ["Seller needs", "Lifecycle", "Initiatives"]).map(label => `<span>${label}</span>`).join("")}</div>
+              <div class="preview-result">${index === 0 ? 'Unified customer model' : 'Segment-specific measurement'}</div>
+            </div>
+            <div class="case-content">
+              <p class="project-label">${project.label}</p>
+              <h3>${project.title}</h3>
+              <p>${project.problem}</p>
+              <dl><dt>My contribution</dt><dd>${project.contribution}</dd><dt>What the work enables</dt><dd>${project.outcome}</dd></dl>
+              <ul class="case-tags">${project.tags.map(tag => `<li>${tag}</li>`).join("")}</ul>
+              ${index === 1 ? '<p class="case-note">Reconstructed from project recollection; historical outcomes are not presented as verified results.</p>' : '<p class="case-note">Public, illustrative architecture and masked SQL. No customer-level records.</p>'}
+              <a class="button secondary" href="${project.url}" target="_blank" rel="noopener noreferrer">Read case study</a>
+            </div>
+          </article>`).join("")}
+      </div>
     </section>
 
     <section id="focus" class="section story-section" aria-labelledby="focus-title">
@@ -160,26 +190,6 @@ document.querySelector<HTMLDivElement>("#app")!.innerHTML = `
       </div>
     </section>
 
-    <section id="projects" class="section project-section" aria-labelledby="projects-title">
-      <div class="chapter">
-        <p class="eyebrow">Selected proof</p>
-        <h2 id="projects-title">A few systems behind the story.</h2>
-      </div>
-      <div class="project-list">
-        ${projects
-          .map(
-            (project) => `
-              <article class="project-row">
-                <p class="project-label">${project.label}</p>
-                <h3>${project.title}</h3>
-                <p>${project.description}</p>
-              </article>
-            `
-          )
-          .join("")}
-      </div>
-    </section>
-
     <section class="section principles" aria-labelledby="principles-title">
       <div class="chapter">
         <p class="eyebrow">How I work</p>
@@ -191,9 +201,8 @@ document.querySelector<HTMLDivElement>("#app")!.innerHTML = `
           analytics work does not just produce charts; it gives teams a shared language for
           what changed, why it changed, and what to try next.
         </p>
-        <ul class="tool-list" aria-label="Tools and platforms">
-          ${tools.map((tool) => `<li>${tool}</li>`).join("")}
-        </ul>
+        <p>I make metric definitions, data assumptions, and modelling decisions explicit so the work can be reviewed, reused, and maintained. The case studies show that reasoning alongside the implementation.</p>
+        <div class="skill-groups">${skillGroups.map(group => `<article><h3>${group.title}</h3><p>${group.text}</p><p class="skill-tools">${group.tools}</p></article>`).join("")}</div>
       </div>
     </section>
 
@@ -203,9 +212,10 @@ document.querySelector<HTMLDivElement>("#app")!.innerHTML = `
         <h2 id="contact-title">If your team is trying to find the signal in customer, product, or campaign data, let us talk.</h2>
       </div>
       <div class="contact-panel">
-        <p>Kuala Lumpur, Malaysia</p>
+        <p>Kuala Lumpur, Malaysia · UTC+8</p>
+        <p>Open to fully remote product and customer analytics roles.</p>
         <a href="mailto:carmenchoong234@gmail.com">carmenchoong234@gmail.com</a>
-        <a href="https://www.linkedin.com/" target="_blank" rel="noreferrer">LinkedIn</a>
+        <a href="https://github.com/kahmannC" target="_blank" rel="noopener noreferrer">GitHub</a>
       </div>
     </section>
   </main>
