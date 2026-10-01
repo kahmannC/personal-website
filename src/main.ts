@@ -30,27 +30,43 @@ const focusAreas = [
 
 const experience = [
   {
-    company: "Boost Bank",
+    company: "Boost Bank / Boost Credit",
     role: "Senior Associate, Analytics & Business Insights",
-    period: "Nov 2023 - Present",
-    impact:
-      "Built a clearer customer view for digital banking teams through Customer 360 modelling, automated SQL frameworks, and self-service dashboards for adoption, engagement, transactions, and campaign effectiveness.",
+    period: "Nov 2023 – Present",
+    note: "Boost Credit: Nov 2023–Dec 2024 · Transferred to Boost Bank: Jan 2025",
+    impact: "Designed the Customer 360 analytical datamart, reusable SQL frameworks, and self-service Tableau and QuickSight dashboards. Defined product and campaign metrics with business and engineering teams, and investigated adoption, engagement, and transaction behaviour.",
     accent: "rust"
   },
   {
     company: "Lazada Malaysia",
     role: "Associate, Data Steering",
-    period: "Apr 2022 - Oct 2023",
-    impact:
-      "Created measurement systems for seller advertising products across Southeast Asia, including shared metrics, targeting logic, experimentation standards, and dashboards that reduced campaign support time by 20%.",
+    period: "Apr 2022 – Oct 2023",
+    note: "",
+    impact: "Developed measurement frameworks for seller advertising across Southeast Asia, including segmentation, product adoption metrics, targeting logic, and experimentation standards. Partnered with Product and Commercial teams on monetisation initiatives; automated dashboards reduced Customer Success support time by 20%.",
     accent: "blue"
   },
   {
-    company: "S-Cube, AFIC, 2X Marketing",
-    role: "Marketing Analyst, Data Analyst, Data Associate",
-    period: "May 2020 - Mar 2022",
-    impact:
-      "Built the foundation across campaign analytics, CRM data flows, segmentation, retention modelling, dashboards, user flows, and Python-assisted data operations for marketing and product teams.",
+    company: "S-Cube Sdn Bhd",
+    role: "Marketing Analyst",
+    period: "Nov 2021 – Mar 2022",
+    note: "",
+    impact: "Managed paid-media campaign planning and audience targeting, primarily across Meta platforms. Defined success measures, built campaign dashboards and performance trackers, and analysed customer retention and behavioural segments to improve campaign decisions.",
+    accent: "moss"
+  },
+  {
+    company: "AFIC Sdn Bhd",
+    role: "Data Analyst",
+    period: "Feb 2021 – Oct 2021",
+    note: "",
+    impact: "Owned analytics for marketing and product teams, combining Meta Ads, Google Analytics, and CRM data to assess campaign performance. Built conversion and retention dashboards, conducted segmentation and cohort analysis, and translated product requirements into feature documentation, wireframes, and user flows.",
+    accent: "blue"
+  },
+  {
+    company: "2X Marketing",
+    role: "Data Associate",
+    period: "May 2020 – Jan 2021",
+    note: "",
+    impact: "Supported B2B marketing operations for U.S. clients. Enriched and standardised lead data with Python, maintained Salesforce and Pardot data flows, and built Looker Studio and Tableau campaign dashboards for customer success teams.",
     accent: "moss"
   }
 ];
@@ -171,7 +187,7 @@ document.querySelector<HTMLDivElement>("#app")!.innerHTML = `
     <section id="experience" class="section experience-section" aria-labelledby="experience-title">
       <div class="chapter">
         <p class="eyebrow">Where the work happened</p>
-        <h2 id="experience-title">A career built around<br />clearer measurement.</h2>
+        <h2 id="experience-title">A career built around clearer measurement.</h2>
       </div>
       <div class="timeline" aria-label="Professional experience">
         ${experience
@@ -182,6 +198,7 @@ document.querySelector<HTMLDivElement>("#app")!.innerHTML = `
                 <p class="timeline-meta">${item.period}</p>
                 <h3>${item.role}</h3>
                 <p class="company">${item.company}</p>
+                ${item.note ? `<p class="employment-note">${item.note}</p>` : ""}
                 <p>${item.impact}</p>
               </article>
             `
